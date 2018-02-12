@@ -3,6 +3,7 @@
 ### outerSlideBody
 
 DIV with class outerSlideBody provides the main holder which is named as "slide1" in the given example.
+
 ```
 <div class="outerSlideBody col-lg-12" data-name="slide1">
 	Body
@@ -10,7 +11,7 @@ DIV with class outerSlideBody provides the main holder which is named as "slide1
 ```
 
 ### Slide
-This particular DIV will be left most visible slide which is identified by data-active=1 but when in event when last slide is reached then right most slide becomes the active slide with value 1 and rest 0
+This particular DIV will be left most visible slide which is identified by data-active=1 but when the last slide is reached then right most slide becomes the active slide
 ```
 <div class="slider " data-active="1" >
 	Slide Content
@@ -18,12 +19,19 @@ This particular DIV will be left most visible slide which is identified by data-
 ```
 
 ### Controls
-data-body is used to refer to slide name which this particular span element controls and slide direction is decided by data-slide which be can prev (i.e previous) or next
+data-body is used to refer to slide name which this particular span element controls and slide direction is decided by data-slide which be prev (i.e previous) or next
 ```
+#### Right Control
 <span class="left silde-control" data-body="slide1" data-slide="prev" data-active="1">
-	 ( Arrow icon to justife direction or something equivalent ) 
+		( Arrow icon to justife direction or something equivalent ) 
+</span>
+
+#### Left Control
+<span class="right silde-control" data-body="slide1" data-slide="next" data-active="1">
+		( Arrow icon to justife direction or something equivalent ) 
 </span>
 ```
 
 ### Example:
-![alt text](https://github.com/VamshikShetty/Web-CookBook/blob/master/Continuous_Slide_Show/example.JPG)
+
+![alt text](https://github.com/VamshikShetty/Continuous-Slide-Show/blob/master/example.jpeg)
