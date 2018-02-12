@@ -21,12 +21,12 @@ This particular DIV will be left most visible slide which is identified by data-
 ### Controls
 data-body is used to refer to slide name which this particular span element controls and slide direction is decided by data-slide which be prev (i.e previous) or next
 ```
-#### Right Control
+Left Control
 <span class="left silde-control" data-body="slide1" data-slide="prev" data-active="1">
 		( Arrow icon to justife direction or something equivalent ) 
 </span>
 
-#### Left Control
+Right Control
 <span class="right silde-control" data-body="slide1" data-slide="next" data-active="1">
 		( Arrow icon to justife direction or something equivalent ) 
 </span>
@@ -34,4 +34,4 @@ data-body is used to refer to slide name which this particular span element cont
 
 ### Example:
 
-![alt text](https://github.com/VamshikShetty/Continuous-Slide-Show/blob/master/example.jpeg)
+![alt text](https://github.com/VamshikShetty/Web-CookBook/blob/master/Continuous_Slide_Show/example.JPG)
