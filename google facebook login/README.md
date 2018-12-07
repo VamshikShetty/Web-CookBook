@@ -10,4 +10,4 @@ Facebook SDK --> https://developers.facebook.com/docs/javascript
 
 
 
-![alt text](https://raw.githubusercontent.com/VamshikShetty/google-facebook-login/master/login.png)
+![alt text](https://github.com/VamshikShetty/Web-CookBook/blob/master/google%20facebook%20login/login.png)
