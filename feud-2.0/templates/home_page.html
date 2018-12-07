@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FEUD</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Custom fonts for this template -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-agency/3.3.7/css/agency.min.css" rel="stylesheet">
+
+  </head>
+  <style>
+	body{
+	
+	background-position: right top;
+	background-image:url({{url_for('static',filename='HTML/background.png')}});
+	
+	
+	
+	}
+	@font-face {
+    font-family: logo;
+    src: url({{url_for('static',filename='HTML/Blockheads.ttf')}});
+}
+	
+	.clearfix
+	{
+	overflow:hidden;
+	}
+	
+	
+    </style>
+ 
+<script>
+function getDB() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("high_score_body").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "/high_score/", true);
+  xhttp.send();
+}
+</script> 
+  
+ 
+
+  <body id="page-top">
+	
+  
+  
+      
+        <a class="navbar-brand js-scroll-trigger" href="#page-top" style=" padding-top:70px;font-family:logo; font-size:100px;letter-spacing: 10px;">FEUD</a> 
+      <div class="container" style="padding-top:100px">
+	  
+	  <!-- Trigger the modal with a button -->
+	  <div style="padding-bottom:50px">
+<button type="button" class="btn btn-lg" style="background-color:#fed136 ;float:right	"data-toggle="modal" data-target="#myModal" onclick="getDB()">Rank</button>
+
+<form action="/logout/" method="post">
+<button class="btn btn-lg" style="background-color:#fed136 ;float:right; margin-right:7px" type="submit" >Logout</button>
+</form>
+
+</div>
+<br>
+		
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!--RANK DETAILS to be stored here-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Rank</h4>
+      </div>
+      <div class="modal-body" id="high_score_body">
+        <p>Loading . . .</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	
+		<div style="float:right">
+		<p style="font-family:Arial; font-size:20px;letter-spacing: 5px;color:#fed136;">Hi! {{username}}</p>
+		<p style="font-family:Arial; font-size:20px;letter-spacing: 5px;color:#fed136;">Score:{{score}}</p> 
+		<p style="font-family:Arial; font-size:20px;letter-spacing: 5px;color:#fed136;">Attempts Left:{{attempts}}</p>
+		<p style="font-family:Arial; font-size:20px;letter-spacing: 5px;color:#fed136;">Your rank:{{rank}}</p>
+		<p style="font-family:Arial; font-size:20px;letter-spacing: 5px;color:#fed136;">High Score:{{ms}}</p>
+		</div>		
+       <div class= "container">
+	<div  class="clearfix" style="margin-left:250px;border:3px solid #fed136 ;border-radius:25px; width:500px;height:400px;">
+          <img src={{question_link}} class="img-rounded" alt="" style="width:500px;height:400px"> 
+		</div>
+		
+		
+	
+		     <!-- ANWER FORM-->
+			 
+			 
+			  <form id="Answer" name="sentMessage" action="/submit_answer/" method="post">
+              <div class="row" style="margin-top:40px;margin-left:290px">
+               
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <textarea class="form-control" name="answer" id="answer" placeholder="Your Answer " required data-validation-required-message="Please enter a message."></textarea>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-7 text-center" style="padding-right:80px;">
+                  <div id="success"></div>
+		
+                  <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Answer</button>
+                </div>
+				 </div>
+	
+		
+              </div>
+            </form>
+           
+		   
+		   
+          
+       

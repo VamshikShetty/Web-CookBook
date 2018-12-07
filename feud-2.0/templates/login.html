@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FEUD</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-agency/3.3.7/css/agency.min.css" rel="stylesheet">
+
+  </head>
+  <style>
+	body{
+	
+	background-position: right top;
+	background-image:url({{url_for('static',filename='HTML/background.png')}});
+	
+	
+	
+	}
+	@font-face {
+    font-family: logo;
+    src: url({{url_for('static',filename='HTML/Blockheads.ttf')}});
+}
+	
+    </style>
+ 
+ 
+  <body id="page-top">
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+	
+	{% block body %}{% endblock %}
+
+    <!-- Navigation -->
+   <a class="navbar-brand js-scroll-trigger" href="#page-top" style=" padding-top:70px;font-family:logo; font-size:100px;letter-spacing: 10px;">FEUD</a> 
+<button class="btn btn-default" style="margin-top:5%;margin-right:3%;background-color:#fed136;font:sans-serif;float:right"type="button" onclick="window.location.href='{{url_for('register')}}';" >
+    Register
+</button>
+      <div class="container" style="padding-top:100px">
+        
+					
+        <div class="row" >
+          <div class="col-md-12 text-center">
+            <h2 class="section-heading text-uppercase" style="	color:white">Login</h2>
+           
+          </div>
+        </div>
+	  <div style="padding-left:300px ;padding-top:50px;">
+      <div class="row" style="padding-left:200px;padding-top:50px;padding-bottom:50px;border: 3px solid #fed136 ;border-radius:25px; width:600px	">
+          <div class="col-lg-12">
+            <form id="contactForm" name="sentMessage" method="POST" action="/check_cr/">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Username *" required data-validation-required-message="Please enter your name.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+				  <br>
+                  <div class="form-group">
+                    <input class="form-control" id="password" name="password" type="password" placeholder="Password *" required data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  
+                </div>
+               
+					
+                <div class="col-lg-7 text-center" style="padding-right:100px;padding-top:20px">
+                  <div id="success"></div>
+                  <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">login</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        
+      </div>
+	  </div>
+	
+        
+      </div>
+	</body>
+</html>
+   
+

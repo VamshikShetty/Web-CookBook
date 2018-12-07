@@ -1,0 +1,186 @@
+--
+-- user table to save password
+--
+create table user_table( 
+username varchar(40) not null primary key,
+password varchar(500)); 
+
+
+
+--
+-- procedure to retrive password from user_table  
+--
+delimiter $$
+create  procedure `check_password` (IN usern varchar(40))
+
+begin
+
+select password from user_table where username=usern;
+
+
+END $$
+delimiter ;
+
+
+
+--
+-- question table to have http link and answer
+--
+create table question(
+q_id INT(3) not null auto_increment primary key,
+question varchar(500),
+answer varchar(100)
+);
+
+insert into question(question,answer) values('http://4.bp.blogspot.com/-GrHA9_KBZKY/TfJm7M7J3ZI/AAAAAAAAAH8/AoTGEmp6L-I/s400/The+march+of+the+penguins.jpg',' cat mango ');
+insert into question(question,answer) values('https://i.kinja-img.com/gawker-media/image/upload/s--QOSbCFdE--/c_scale,fl_progressive,q_80,w_800/17h9qdpzzjjycjpg.jpg',' ship car ');
+insert into question(question,answer) values('http://cdn-static.denofgeek.com/sites/denofgeek/files/styles/main_wide/public/pokemon_4.jpg?itok=BzHf7-T4',' pokemon pilkachu ');
+insert into question(question,answer) values('https://images.pexels.com/photos/109371/pexels-photo-109371.jpeg?w=940&h=650&auto=compress&cs=tinysrgb',' laptop computer ');
+insert into question(question,answer) values('https://i.pinimg.com/564x/2d/ec/fb/2decfba2843b9bfc0b8fb473dc84c93b.jpg',' person suit ');
+insert into question(question,answer) values('http://www.beckermangyn.net/wp-content/uploads/2016/05/mona-lisa-06.jpg','mona lisa painting');
+insert into question(question,answer) values('https://ii.worldmarket.com/fcgi-bin/iipsrv.fcgi?FIF=/images/worldmarket/source/29365_XXX_v1.tif&wid=650&cvt=jpeg',' sofa chair ');
+insert into question(question,answer) values('https://static.pexels.com/photos/186077/pexels-photo-186077.jpeg','house building');
+
+insert into question(question,answer) values('https://i.pinimg.com/736x/a2/99/67/a299673e5fdb7bde5e770596d6609989--cabin-homes-log-homes.jpg',' house mountain ');
+insert into question(question,answer) values('https://americananglican.org/wp-content/uploads/2016/07/web-Wolf-with-Sheep-770x303.jpg',' wolf sheep ');
+insert into question(question,answer) values('https://i.ytimg.com/vi/eKz0qI07ES8/maxresdefault.jpg',' earth moon ');
+
+insert into question(question,answer) values('https://i.ytimg.com/vi/m5_AKjDdqaU/maxresdefault.jpg',' car bugatti lamborghini ');
+insert into question(question,answer) values('http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1487701021/eiffel-tower-paris-france-EIFFEL0217.jpg?itok=m0MZOYjh',' eiffel tower paris ');   
+insert into question(question,answer) values('http://www.benhallphoto.com/wp-content/uploads/2009/09/dipper-perched-on-waterfall.jpg',' waterfall bird ');
+insert into question(question,answer) values('http://www.wallpapers13.com/wp-content/uploads/2015/12/Scenery_heaven_leaves_tress_nature_forests_ultra-2560x1600-hd-wallpaper-1808791-1280x768.jpg',' forest fire ');
+
+
+--
+-- procedure to check if the answer is correct  
+--
+drop procedure check_answer;
+delimiter $$
+create  procedure `check_answer` (IN id INT(3), IN ans varchar(100) )
+
+begin
+declare string varchar(100);
+set string = CONCAT('% ',ans,' %');
+select * from question q where q_id=id and answer like string;
+END $$
+delimiter ;
+
+
+--
+-- procedure to get question using q_id 
+--
+delimiter $$
+create  procedure `get_question`(IN id INT(3) )
+begin
+
+select question from question q where q_id=id;
+
+END $$
+delimiter ;
+--
+-- 
+--
+
+
+--
+--  details table to save user details
+--
+create table details
+(
+username varchar(40) not null,
+user_rank INT(3) DEFAULT 0,
+score INT(4) DEFAULT 0,
+email varchar(50),
+last_played date,
+foreign key(username) references user_table(username)
+);
+
+delimiter $$
+create  procedure `insert_details`
+(
+IN v_username varchar(40),
+IN v_email varchar(50)
+)
+begin
+
+insert into details(username,email,last_played) values(v_username,v_email,null);
+
+END $$
+delimiter ;
+
+
+
+
+--
+-- procedure to get rank and score based on username also update last played
+--
+delimiter $$
+create  procedure `get_rank_score`(IN username_id varchar(40) )
+begin
+
+select user_rank,score from details where username= username_id ;
+
+-- NOW is built in function in mysql fro getting currect date and time
+update details set last_played=NOW() where username= username_id;
+
+END $$
+delimiter ;
+--
+-- 
+--
+
+--
+-- procedure to update score 
+--
+delimiter $$
+create  procedure `update_score`(IN username_id varchar(40) ,IN v_score INT(4))
+begin
+declare ra INT;
+set @ra :=0;
+
+update details set score=v_score where username=username_id and score<v_score;
+
+update details d,(select *,@ra:=@ra+1 as v_rank from details order by score DESC , username asc)  al set d.user_rank=al.v_rank where d.username=al.username;
+
+END $$
+delimiter ;
+--
+-- 
+--
+
+
+--
+-- procedure to get top 3 high score player
+--
+delimiter $$
+create  procedure `high_score`()
+begin
+ select username,user_rank,score from details where user_rank <> 0 having user_rank<4 order by user_rank asc;
+END $$
+delimiter ;
+--
+-- 
+--
+
+
+--
+-- procedure to register
+--
+delimiter $$
+create procedure `register`(IN name varchar(40), IN password varchar(500), IN em varchar(50))
+begin
+declare co INT;
+select count(username) into co from user_table where username= name;
+if(co < 1) then
+insert into user_table values(name,password);
+call insert_details(name,em);
+select 1;
+else
+select 0;
+end if;
+END $$
+delimiter ;
+
+--
+--
+--

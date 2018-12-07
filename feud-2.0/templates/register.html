@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FEUD</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-agency/3.3.7/css/agency.min.css" rel="stylesheet">
+
+  </head>
+  <style>
+	body{
+	
+	background-position: right top;
+	background-image:url({{url_for('static',filename='HTML/background.png')}});
+	
+	
+	
+	}
+	@font-face {
+    font-family: logo;
+    src: url({{url_for('static',filename='HTML/Blockheads.ttf')}});
+}
+	
+    </style>
+ 
+ 
+  <body id="page-top">
+{% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+                  <div class="alert alert-warning alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        {{message}}
+                  </div>
+                {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+    <!-- Navigation -->
+   <a class="navbar-brand js-scroll-trigger" href="#page-top" style=" padding-top:70px;font-family:logo; font-size:100px;letter-spacing: 10px;">FEUD</a> 
+      <div class="container" style="padding-top:100px">
+        
+					
+        <div class="row" style="padding-top:7%"	>
+          <div class="col-md-12 text-center">
+            <h2 class="section-heading text-uppercase" style="	color:white">Register</h2>
+           
+          </div>
+        </div>
+		
+		<div class="container-fluid"style="padding-left:20%;padding-top:5%">
+		
+<form class="form-horizontal" action="/get_register/" method="POST">
+
+	
+  <div class="form-group">
+    <label class=" col-sm-2" for="email" style="color:#fed136 ; font-size:20px">Name:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="name" name="username" placeholder="Enter name.">
+	  <p style="color:red">*note that this will be your username</P>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class=" col-sm-2" for="email"style="color:#fed136 ; font-size:20px">Email:</label>
+    <div class="col-sm-6">
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class=" col-sm-2" for="pwd" name="password" style="color:#fed136 ; font-size:20px">Password:</label>
+    <div class="col-sm-6"> 
+      <input type="password" name="password"class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default"style="background-color:#fed136;" >Submit</button>
+    </div>
+  </div>
+</form>
+
+
+</div>
