@@ -11,4 +11,4 @@ pip install passlib
 ```
 
 
-![alt text](https://github.com/VamshikShetty/FEUD-2.0/blob/master/Example_image/login.JPG)
+![alt text](https://github.com/VamshikShetty/Web-CookBook/blob/master/feud-2.0/Example_image/login.JPG)
