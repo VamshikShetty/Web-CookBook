@@ -34,4 +34,4 @@ Right Control
 
 ### Example:
 
-![alt text](https://github.com/VamshikShetty/Web-CookBook/blob/master/Continuous_Slide_Show/example.JPG)
+![alt text](https://github.com/VamshikShetty/Web-CookBook/blob/master/Continuous%20Slide%20Show/example.JPG)
