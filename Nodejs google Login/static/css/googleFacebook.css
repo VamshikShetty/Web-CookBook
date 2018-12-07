@@ -1,0 +1,82 @@
+
+		
+/*
+/*
+/* 			STARTS
+/*
+Login Button CSS for Google and Facebook buttons 
+/*
+/*
+/*
+*/
+
+.loginBtn {
+   box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin-top: 15px;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  background: #FFF;
+}
+
+.loginBtn:before
+{
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+
+}
+
+
+.loginBtn--google 
+{
+  content: url('icon_google.png');
+  color: grey;
+  border: 0.5px solid #d1cbcb;
+}
+.loginBtn--google:before 
+{
+  content: url('icon_google.png');
+  border-right: #4885ed 2px solid;
+}
+.loginBtn--google:hover,
+.loginBtn--google:focus {
+  background: #FCFCFC;
+}
+
+
+
+/*
+.loginBtn--facebook 
+{
+  background: #3B5998;
+  color: #FFF;
+
+}
+
+.loginBtn--facebook:before 
+{
+  content: url('fb_icon.png');
+}
+.loginBtn--facebook :hover,
+.loginBtn--facebook :focus {
+}
+*/
+/*
+/*
+/* 			ENDS
+/*
+Login Button CSS for Google and Facebook buttons 
+/*
+/*
+/*
+*/

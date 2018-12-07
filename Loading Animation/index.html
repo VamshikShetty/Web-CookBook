@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>loading animation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+
+<style type="text/css">
+
+	.loading_animation_body
+	{
+		position:fixed;
+		top:0;
+		left:0;
+		height:100vh;
+		width:100vw;
+		
+		background: rgba(0, 0, 0, 0.8);
+		display: -webkit-flex;
+		display: flex;
+		justify-content: center;	
+	}
+	
+	#loading_animation
+	{
+		position:relative;
+		top:100px;
+		
+		width:150px;
+		height:150px;
+	}
+	
+</style>
+
+
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Header</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>
+</div>
+
+<div class="loading_animation_body" >
+
+	<div id="loading_animation">
+			<object>	
+				<embed src="loading_animation.svg" width="100%">
+			</object>	
+	</div>	
+	
+</div>
+
+</body>
+</html>
